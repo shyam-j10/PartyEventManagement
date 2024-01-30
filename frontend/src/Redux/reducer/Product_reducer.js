@@ -19,14 +19,17 @@ export const ProductReducer = (state = initialState, { type, payload }) => {
           ]
         };
 
-    // case ActionType.EDIT_CART:
-    //   const idx=state.cartProduct.indexOf(payload);
-    //     console.log(idx)
-    //   return{
-    //     ...state,cartProduct:[
-    //       ...cartProduct,...cartProduct[idx].status="Approved"
-    //     ]
-    //   }
+    case ActionType.EDIT_CART:
+      const idx=state.cartProduct.indexOf(payload);
+        console.log(idx)
+        const prod=state.cartProduct[idx];
+        console.log(prod);
+      return{
+        ...state,cartProduct:[
+          ...state.cartProduct,
+          prod['statu']="Approved"
+        ]
+      }
      
     // case ActionType.WISHLIST:
     //   let value= {...state, favProduct: [...state.favProduct, payload]}

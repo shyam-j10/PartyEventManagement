@@ -2,10 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import {editProducts,removeCart} from '../Redux/actions/action'
-import Navbar from '../navbar/Navbar'
-import "./Bookings.css"
-import { Link } from 'react-router-dom'
-export default function Bookings() {
+import "../bookings/Bookings.css"
+export default function ViewBookings() {
     
 
     const allProd=useSelector(state=>state)
@@ -22,10 +20,7 @@ export default function Bookings() {
 
   return (
     <div>
-      <Navbar/>
-
-      <Link to='/approvedBookings'>Approved</Link>
-      <div><center><h1 id='s-title'>MY BOOKINGS</h1></center></div>
+      <div><center><h1 id='s-title'>ALL BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
           {bookings.map(booking=>
@@ -36,15 +31,6 @@ export default function Bookings() {
                 <p id='s-price'>{booking.location}</p> 
                 <p id='s-price'>{booking.dur}</p>
                 <p id='s-price'>{booking.statu}</p>
-                {/* <button onClick={()=>
-                  dispatch(editProducts(booking))
-                  }>Approve</button> */}
-                <button onClick={()=>{
-
-                  confirm("Are you sure of cancelling the booking")
-                  dispatch(removeCart(booking))
-                }
-                }>Cancel</button>
               </div>
           )}
           </div> :" No bookings"

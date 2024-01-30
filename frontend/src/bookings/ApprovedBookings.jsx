@@ -4,12 +4,18 @@ import {useSelector,useDispatch} from 'react-redux'
 import {editProducts,removeCart} from '../Redux/actions/action'
 import Navbar from '../navbar/Navbar'
 import "./Bookings.css"
-import { Link } from 'react-router-dom'
-export default function Bookings() {
+export default function ApprovedBookings() {
     
 
     const allProd=useSelector(state=>state)
     const bookings=allProd.allProducts.cartProduct
+    
+    function filter_status(event) {
+        return event.statu == "Approved";
+    }
+    
+    var filtered = bookings.filter(filter_status);
+
     const dispatch=useDispatch()
     const [num,setNum]=useState(true)
     useEffect(() => {
@@ -23,12 +29,10 @@ export default function Bookings() {
   return (
     <div>
       <Navbar/>
-
-      <Link to='/approvedBookings'>Approved</Link>
       <div><center><h1 id='s-title'>MY BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
-          {bookings.map(booking=>
+          {filtered.map(booking=>
               <div className='booking'>
                   <img src={booking.link}/>
                   <h1 id='s-name'>{booking.name}</h1>
@@ -39,12 +43,12 @@ export default function Bookings() {
                 {/* <button onClick={()=>
                   dispatch(editProducts(booking))
                   }>Approve</button> */}
-                <button onClick={()=>{
+                {/* <button onClick={()=>{
 
                   confirm("Are you sure of cancelling the booking")
                   dispatch(removeCart(booking))
                 }
-                }>Cancel</button>
+                }>Cancel</button> */}
               </div>
           )}
           </div> :" No bookings"

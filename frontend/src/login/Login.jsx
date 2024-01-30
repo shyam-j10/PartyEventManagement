@@ -11,15 +11,12 @@ function Login() {
   const[name,setName]=useState("");
 
   const handleLogin = (e) => {
-    // Perform login logic here if needed
-    // For now, just navigate to the profile page
     e.preventDefault();
     if(name.includes("@admin")){
-      navigate("/dashboard")
+      navigate("/admin")
     }else{
       navigate("/")
     }
-    // navigate('/profile');
   };
   return (
     <div className='whole-container'>

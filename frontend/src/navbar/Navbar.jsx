@@ -37,7 +37,7 @@ function Navbar() {
       </a>
       <ul className={active}>
         <li className="nav__item">
-          <Link to="/bookings" className="nav__link">
+          <Link to="/bookings" className="nav__link" onClick={(e)=>e.preventDefault}>
             Bookings
           </Link>
         </li>

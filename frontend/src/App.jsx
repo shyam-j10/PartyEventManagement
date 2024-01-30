@@ -12,6 +12,11 @@ import Venues from './venues/Venues'
 import { Provider } from 'react-redux';
 import {store} from "./Redux/reducer/store" 
 import Bookings from './bookings/Bookings'
+import Admin from './admin/Admin'
+import ApproveBookings from './admin/ApproveBookings'
+import DeleteBookings from './admin/DeleteBookings'
+import ViewBookings from './admin/ViewBookings'
+import ApprovedBookings from './bookings/ApprovedBookings'
 
 // import HomeNavbar from './navbar/HomeNavbar'
 
@@ -29,9 +34,14 @@ function App() {
           <Route path='/login' element={<Login/>}></Route>
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}></Route>
+          <Route path="/admin" element={<Admin/>}></Route>
           <Route path='/photos' element={<Gallery/>}></Route>
           <Route path='/venues' element={<Venues/>}></Route>
           <Route path='/bookings' element={<Bookings/>}></Route>
+          <Route path='/approveBookings' element={<ApproveBookings/>}></Route>
+          <Route path='/approvedBookings' element={<ApprovedBookings/>}></Route>
+          <Route path='/deleteBookings' element={<DeleteBookings/>}></Route>
+          <Route path='/viewBookings' element={<ViewBookings/>}></Route>
           
         </Routes>
       </BrowserRouter>

@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {editProducts,removeCart} from '../Redux/actions/action'
-import Navbar from '../navbar/Navbar'
-import "./Bookings.css"
-import { Link } from 'react-router-dom'
-export default function Bookings() {
+import {removeCart} from '../Redux/actions/action'
+import "../bookings/Bookings.css"
+export default function DeleteBookings() {
     
 
     const allProd=useSelector(state=>state)
@@ -22,10 +20,7 @@ export default function Bookings() {
 
   return (
     <div>
-      <Navbar/>
-
-      <Link to='/approvedBookings'>Approved</Link>
-      <div><center><h1 id='s-title'>MY BOOKINGS</h1></center></div>
+      <div><center><h1 id='s-title'>ALL BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
           {bookings.map(booking=>
