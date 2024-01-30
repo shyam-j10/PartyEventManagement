@@ -7,7 +7,7 @@ export default function Services() {
                     {"id":3,"name":"Entertainment","link":"https://i0.wp.com/picjumbo.com/wp-content/uploads/party-dj-in-dance-music-club-free-photo.jpg?w=2210&quality=70","desc":"Immerse yourself in the electrifying atmosphere of our DJ party and live music orchestra fusion."}
                 ]
 
-    const events=[{"id":1,"name":"Wedding","link":""}]
+    
   return (
     <>
         <Navbar/>

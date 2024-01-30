@@ -1,20 +1,22 @@
 import React, { useState,useEffect } from "react";
 import "./Navbar.css";
+import {Link} from 'react-router-dom'
 
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const [scroll,setScroll]=useState("nav");
-   useEffect(() => {
-    window.addEventListener("scroll",()=>{
-      if(window.scrollY<900){
-        console.log(window.scrollY)
-        setScroll("nav");
-      }else{
-        setScroll("nav-fixed");
-      }
-      })
-  })
+  //  useEffect((e) => {
+    // e.preventDefault()
+    // window.addEventListener("scroll",()=>{
+    //   if(window.scrollY<900){
+    //     console.log(window.scrollY)
+    //     setScroll("nav");
+    //   }else{
+    //     setScroll("nav-fixed");
+    //   }
+    //   })
+  // })
  
 
 
@@ -35,29 +37,29 @@ function Navbar() {
       </a>
       <ul className={active}>
         <li className="nav__item">
-          <a href="/" className="nav__link">
-            Home
-          </a>
+          <Link to="/bookings" className="nav__link">
+            Bookings
+          </Link>
         </li>
         <li className="nav__item">
-          <a href="/about" className="nav__link">
-            About
-          </a>
+          <Link to="/venues" className="nav__link">
+            Venues
+          </Link>
         </li>
         <li className="nav__item">
-          <a href="/photos" className="nav__link">
+          <Link to="/photos" className="nav__link">
             Galleria
-          </a>
+          </Link>
         </li>
         <li className="nav__item">
-          <a href="/services" className="nav__link">
+          <Link to="/services" className="nav__link">
             Services
-          </a>
+          </Link>
         </li>
         <li className="nav__item">
-          <a href="/login" className="nav__link">
+          <Link to ="/login" className="nav__link">
             Login
-          </a>
+          </Link>
         </li>
       </ul>
       <div onClick={navToggle} className={icon} id='logo'>

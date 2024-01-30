@@ -35,14 +35,15 @@ html {
 body {
   font-size: 1.6rem;
 }
-li {
+
+.nav li,.nav-fixed li{
   list-style: none;
 }
-a {
+
+.nav a,.nav-fixed a{
   text-decoration: none;
   color: rgb(204, 204, 204);
   font-size: large;
-  
 }
 
 .nav-fixed{
