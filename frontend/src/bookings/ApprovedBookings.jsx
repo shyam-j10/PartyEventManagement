@@ -28,8 +28,8 @@ export default function ApprovedBookings() {
 
   return (
     <div>
-      <Navbar/>
-      <div><center><h1 id='s-title'>MY BOOKINGS</h1></center></div>
+      {/* <Navbar/> */}
+      <div><center><h1 id='s-title'>APPROVED BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
           {filtered.map(booking=>

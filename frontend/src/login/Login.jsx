@@ -13,7 +13,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     if(name.includes("@admin")){
-      navigate("/admin")
+      navigate("/dashboard")
     }else{
       navigate("/")
     }

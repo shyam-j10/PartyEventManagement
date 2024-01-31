@@ -50,6 +50,15 @@
     font-family: 'Poppins', sans-serif;
     /* width: 400px; */
 }
+
+#s-form{
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
 #s-location{
     font-family: 'Exo 2', sans-serif;
     font-family: 'Poppins', sans-serif;

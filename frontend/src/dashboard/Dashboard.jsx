@@ -21,6 +21,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import Admin from '../admin/Admin';
 
 function Copyright(props) {
   return (
@@ -92,12 +93,15 @@ export default function Dashboard() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Box sx={{ display: 'flex' }}>
+      <Box sx={{ display: 'flex' ,backgroundColor:"burlywood"}}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
+              backgroundColor:"burlywood",
+              color:'black',
+      // keep right padding when drawer closed
             }}
           >
             <IconButton
@@ -117,7 +121,7 @@ export default function Dashboard() {
               variant="h6"
               color="inherit"
               noWrap
-              sx={{ flexGrow: 1 }}
+              sx={{ flexGrow: 1, }}
             >
               Dashboard
             </Typography>
@@ -189,6 +193,8 @@ export default function Dashboard() {
                   <Deposits />
                 </Paper>
               </Grid>
+              <Admin/>
+
               {/* Recent Orders */}
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>

@@ -5,11 +5,17 @@ import {editProducts,removeCart} from '../Redux/actions/action'
 import Navbar from '../navbar/Navbar'
 import "./Bookings.css"
 import { Link } from 'react-router-dom'
+import ApprovedBookings from './ApprovedBookings'
 export default function Bookings() {
     
 
     const allProd=useSelector(state=>state)
     const bookings=allProd.allProducts.cartProduct
+    function filter_status(event) {
+      return event.statu == "Pending";
+  }
+  
+  var filtered = bookings.filter(filter_status);
     const dispatch=useDispatch()
     const [num,setNum]=useState(true)
     useEffect(() => {
@@ -24,18 +30,21 @@ export default function Bookings() {
     <div>
       <Navbar/>
 
-      <Link to='/approvedBookings'>Approved</Link>
-      <div><center><h1 id='s-title'>MY BOOKINGS</h1></center></div>
+      {/* <Link to='/approvedBookings'>Approved</Link> */}
+      <div><center><h1 id='s-title'>PENDING BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
-          {bookings.map(booking=>
+          {filtered.map(booking=>
               <div className='booking'>
                   <img src={booking.link}/>
                   <h1 id='s-name'>{booking.name}</h1>
                 <p id='s-price'>₹{booking.price}</p> 
                 <p id='s-price'>{booking.location}</p> 
-                <p id='s-price'>{booking.dur}</p>
-                <p id='s-price'>{booking.statu}</p>
+                <p id='s-price'>Time:{booking.dur}</p>
+                <p id='s-price'>No of Peoples:{booking.peop}</p>
+                <p id='s-price'>Phone Number:{booking.phon}</p>
+                <p id='s-price'>Status:{booking.statu}</p>
+                {/* <p id='s-price'>{booking.statu}</p> */}
                 {/* <button onClick={()=>
                   dispatch(editProducts(booking))
                   }>Approve</button> */}
@@ -49,6 +58,7 @@ export default function Bookings() {
           )}
           </div> :" No bookings"
       }
+      <ApprovedBookings/>
     </div>
   )
 }
