@@ -5,13 +5,20 @@ import password from '../assets/password.png';
 import loginImg from '../assets/loginImg.jpeg';
 import {Link,useNavigate} from 'react-router-dom';
 import { useState } from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/context';
 
 function Login() {
+
+  const[pop,setPop]=useContext(UserContext);
   const navigate = useNavigate();
   const[name,setName]=useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setPop(true);
+    console.log(pop);
+    localStorage.setItem("name",name)
     if(name.includes("@admin")){
       navigate("/dashboard")
     }else{

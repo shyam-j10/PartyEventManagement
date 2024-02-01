@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from '../Footer/Footer'
 import Navbar from '../navbar/Navbar'
 import "./Services.css"
 export default function Services() {
@@ -22,6 +23,7 @@ export default function Services() {
             </div>
         )}
         </div>
+        <Footer/>
     </>
   )
 }

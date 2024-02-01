@@ -6,6 +6,7 @@ import Navbar from '../navbar/Navbar'
 import "./Bookings.css"
 import { Link } from 'react-router-dom'
 import ApprovedBookings from './ApprovedBookings'
+import Footer from '../Footer/Footer'
 export default function Bookings() {
     
 
@@ -27,7 +28,7 @@ export default function Bookings() {
     })
 
   return (
-    <div>
+    <div className='h'>
       <Navbar/>
 
       {/* <Link to='/approvedBookings'>Approved</Link> */}
@@ -59,6 +60,7 @@ export default function Bookings() {
           </div> :" No bookings"
       }
       <ApprovedBookings/>
+      <Footer/>
     </div>
   )
 }

@@ -1,11 +1,25 @@
-import React, { useState,useEffect } from "react";
+import React, { useState,useEffect, useContext } from "react";
 import "./Navbar.css";
 import {Link} from 'react-router-dom'
+import { UserContext } from "../context/context";
 
 function Navbar() {
   const [active, setActive] = useState("nav__menu");
   const [icon, setIcon] = useState("nav__toggler");
   const [scroll,setScroll]=useState("nav");
+  const [name,setName]=useState("");
+  const [flag,setFlag]=useState(false);
+
+  const[pop,setPop]=useContext(UserContext);
+  const handleLogout=()=>{
+    window.location.reload();
+    localStorage.clear();
+  }
+
+  useEffect(()=>{
+    console.log(pop);
+  })
+
   //  useEffect((e) => {
     // e.preventDefault()
     // window.addEventListener("scroll",()=>{
@@ -32,13 +46,18 @@ function Navbar() {
   };
   return (
     <nav className={scroll}>
-      <a href="/" className="nav__brand" id="nav-title">
+      <Link to="/" className="nav__brand" id="nav-title">
         Jubilix
-      </a>
+      </Link>
       <ul className={active}>
+      {/* <li className="nav__item">
+          <Link to="/" className="nav__link" onClick={(e)=>e.preventDefault}>
+            Home
+          </Link>
+        </li> */}
         <li className="nav__item">
           <Link to="/bookings" className="nav__link" onClick={(e)=>e.preventDefault}>
-            Profile
+            Bookings
           </Link>
         </li>
         <li className="nav__item">
@@ -47,8 +66,8 @@ function Navbar() {
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/photos" className="nav__link">
-            Galleria
+          <Link to="/contact" className="nav__link">
+            Contact
           </Link>
         </li>
         <li className="nav__item">
@@ -56,12 +75,42 @@ function Navbar() {
             Services
           </Link>
         </li>
+        {
+        pop ? <p>Hii,{localStorage.getItem("name").split("@")[0]}</p> :
+        <li className="nav__item">
+          <Link to ="/login" className="nav__link">Login</Link>
+        </li>
+        }
+        {
+          pop?
+        <li className="nav__item">
+          <Link to ="/" className="nav__link" onClick={handleLogout}>Logout</Link>
+        </li>:""
+        }
+        {
+          pop?
+        <li className="nav__item">
+          <Link to ="/login" className="nav__link">Login as Admin</Link>
+        </li>:""
+        }
+        {/* {
+            localStorage.getItem("name")== undefined?
+            <li className="nav__item">
+              <Link to ="/" className="nav__link" onClick={handleLogout}>Logout</Link>
+            </li>:"hello"
+           
+        } */}
+          </ul>
+        {/* {flag? 
+        <ul>
         <li className="nav__item">
           <Link to ="/login" className="nav__link">
             Login
           </Link>
         </li>
-      </ul>
+        </ul>
+        :{name} */}
+       {/* }  */}
       <div onClick={navToggle} className={icon} id='logo'>
         <div className="line1"></div>
         <div className="line2"></div>
