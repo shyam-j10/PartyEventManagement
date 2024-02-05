@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {editProducts,removeCart} from '../Redux/actions/action'
+import {editProducts,removeCart} from '../redux/actions/action'
 import "../bookings/Bookings.css"
 export default function ApproveBookings() {
     

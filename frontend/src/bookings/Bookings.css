@@ -3,6 +3,7 @@ body{
 }
 .bookings{
     flex:1;
+    display: flex;
 }
 .h{
   display: flex;

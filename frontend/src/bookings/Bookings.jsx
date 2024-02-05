@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {editProducts,removeCart} from '../Redux/actions/action'
+import {editProducts,removeCart} from '../redux/actions/action'
 import Navbar from '../navbar/Navbar'
 import "./Bookings.css"
 import { Link } from 'react-router-dom'
 import ApprovedBookings from './ApprovedBookings'
-import Footer from '../Footer/Footer'
+import Footer from '../footer/Footer'
 export default function Bookings() {
     
 
@@ -51,8 +51,10 @@ export default function Bookings() {
                   }>Approve</button> */}
                 <button onClick={()=>{
 
-                  confirm("Are you sure of cancelling the booking")
-                  dispatch(removeCart(booking))
+                  let result=confirm("Are you sure of cancelling the booking")
+                  if(result){
+                    dispatch(removeCart(booking))
+                  }
                 }
                 }>Cancel</button>
               </div>

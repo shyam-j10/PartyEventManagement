@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import {useSelector,useDispatch} from 'react-redux'
-import {removeCart} from '../Redux/actions/action'
+import {removeCart} from '../redux/actions/action'
 import "../bookings/Bookings.css"
 export default function DeleteBookings() {
     
@@ -36,8 +36,10 @@ export default function DeleteBookings() {
                   }>Approve</button> */}
                 <button onClick={()=>{
 
-                  confirm("Are you sure of cancelling the booking")
-                  dispatch(removeCart(booking))
+                  let result=confirm("Are you sure of cancelling the booking")
+                  if(result){
+                    dispatch(removeCart(booking))
+                  }
                 }
                 }>Cancel</button>
               </div>

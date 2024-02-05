@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Navbar from '../navbar/Navbar'
 import "./Venues.css"
 import {useDispatch} from 'react-redux'
-import { cartProducts} from '../Redux/actions/action'
-import Footer from '../Footer/Footer'
+import { cartProducts} from '../redux/actions/action'
+import Footer from '../footer/Footer'
 export default function Venues() {
   const events=[{id:1,name:"Outdoor Wedding Party",link:"https://media.weddingz.in/images/7941daefa912e70969e8804792325945/top-5-outdoor-wedding-venues-in-gurgaon-for-you-to-get-married-in.jpg",price:"150000",location:"Thrissur",dur:"",peop:"",phon:"",statu:"Pending"},
                 {id:2,name:"Lagoon Wedding Hall",link:"https://image.wedmegood.com/resized/450X/uploads/member/3391766/1661512242_WhatsApp_Image_2022_08_26_at_4.29.53_PM__2_.jpeg",price:"80000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"},
@@ -41,11 +41,14 @@ export default function Venues() {
                 </p> 
 
                <button onClick={()=>{
-                confirm("Do you want to request for booking?")
+                let result=confirm("Do you want to request for booking?")
                 venue.dur=durr
                 venue.peop=people
                 venue.phon=phone
-                dispatch(cartProducts(venue))}}>Request Booking</button>
+                if(result){
+                  dispatch(cartProducts(venue))
+                }
+                }}>Request Booking</button>
             </div>
         )}
         </div>

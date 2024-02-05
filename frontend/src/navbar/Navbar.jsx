@@ -1,6 +1,6 @@
 import React, { useState,useEffect, useContext } from "react";
 import "./Navbar.css";
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import { UserContext } from "../context/context";
 
 function Navbar() {
@@ -9,11 +9,13 @@ function Navbar() {
   const [scroll,setScroll]=useState("nav");
   const [name,setName]=useState("");
   const [flag,setFlag]=useState(false);
+  const navigate=useNavigate();
 
   const[pop,setPop]=useContext(UserContext);
   const handleLogout=()=>{
     window.location.reload();
     localStorage.clear();
+    navigate("/")
   }
 
   useEffect(()=>{
@@ -75,18 +77,23 @@ function Navbar() {
             Services
           </Link>
         </li>
+        {/* <li className="nav__item">
+          <Link to="/photos" className="nav__link">
+            Galleria
+          </Link>
+        </li> */}
         {
         pop ? <p>Hii,{localStorage.getItem("name").split("@")[0]}</p> :
         <li className="nav__item">
           <Link to ="/login" className="nav__link">Login</Link>
         </li>
         }
-        {
+        {/* {
           pop?
         <li className="nav__item">
           <Link to ="/" className="nav__link" onClick={handleLogout}>Logout</Link>
         </li>:""
-        }
+        } */}
         {
           pop?
         <li className="nav__item">
@@ -101,16 +108,8 @@ function Navbar() {
            
         } */}
           </ul>
-        {/* {flag? 
-        <ul>
-        <li className="nav__item">
-          <Link to ="/login" className="nav__link">
-            Login
-          </Link>
-        </li>
-        </ul>
-        :{name} */}
-       {/* }  */}
+
+        
       <div onClick={navToggle} className={icon} id='logo'>
         <div className="line1"></div>
         <div className="line2"></div>

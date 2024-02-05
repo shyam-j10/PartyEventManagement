@@ -67,10 +67,12 @@
 .hserv{
     display: flex;
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .servimg img{
     height: 60vh;
+    margin-top: 10%;
 }
 
 .servimg{
@@ -87,4 +89,5 @@
     padding-top: 20px;
     padding-bottom: 20px;
     cursor: pointer;
+    margin-bottom: 10%;
 }

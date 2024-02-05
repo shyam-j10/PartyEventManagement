@@ -10,7 +10,7 @@ import Dashboard from './dashboard/Dashboard'
 import Gallery from './gallery/Gallery'
 import Venues from './venues/Venues'
 import { Provider } from 'react-redux';
-import {store} from "./Redux/reducer/store" 
+import {store} from "./redux/reducer/store" 
 import Bookings from './bookings/Bookings'
 import Admin from './admin/Admin'
 import ApproveBookings from './admin/ApproveBookings'
