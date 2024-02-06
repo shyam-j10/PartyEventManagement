@@ -20,9 +20,9 @@ public class Venue {
     @Id
     int id;
     String name;
-    String desc;
+    String des;
     String link;
-    String price;
+    int price;
     String location;
     String avail;
 }

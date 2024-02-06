@@ -17,19 +17,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
-@CrossOrigin("*")
-@RequestMapping("/api/v1/auth")
+@RequestMapping("/api/v1/auth/venues")
 public class VenueController {
     @Autowired
     VenueService service;
 
-
-    @PostMapping("/")
+    @PostMapping("")
     public boolean addVenue(@RequestBody Venue venue) {
         return service.addVenue(venue);
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public List<Venue> getAllVenues() {
         return service.getAllVenues();
     }
