@@ -1,6 +1,7 @@
 package com.example.backend.model;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ import lombok.Setter;
 @Entity
 public class Venue {
     @Id
+    @Column(name="venue_id")
     int id;
     String name;
     String des;
