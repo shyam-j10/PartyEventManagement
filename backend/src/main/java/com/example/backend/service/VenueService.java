@@ -16,11 +16,14 @@ public class VenueService {
 
     public boolean addVenue(Venue venue) {
 		repo.save(venue);
+
 		return true;
 	}
 
     public List<Venue> getAllVenues(){
+        System.out.println("List of all venues");
         return repo.findAll();
+        
     }
 
     public Optional<Venue> getVenueById(int id){
