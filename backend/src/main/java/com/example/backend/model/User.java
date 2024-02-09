@@ -28,7 +28,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-// @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "Users")
 public class User implements UserDetails {
     @Id
@@ -38,7 +38,7 @@ public class User implements UserDetails {
     private String name;
     private String email;
     private String password;
-//    private Long mobile;
+    private Long mobile;
 
     @Enumerated(EnumType.STRING)
     private Role role;

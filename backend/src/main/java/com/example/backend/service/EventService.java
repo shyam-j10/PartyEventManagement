@@ -31,4 +31,19 @@ public class EventService {
         repo.deleteById(id);
         return true;
     }
+
+    public Event updateEvent(Event event, int id) {
+		Event model=repo.findById(id).get();
+		model.setEid(event.getEid());
+		model.setLink(event.getLink());
+		model.setPeop(event.getPeop());
+		model.setTime(event.getTime());
+		model.setStatus(event.getStatus());
+		model.setType(event.getType());
+		model.setUser(event.getUser());
+		model.setVenue(event.getVenue());
+		
+		repo.save(model);
+		return model;
+	};
 }

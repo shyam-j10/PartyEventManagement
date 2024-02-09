@@ -31,4 +31,18 @@ public class VenueService {
         repo.deleteById(id);
         return true;
     }
+
+    public Venue updateVenue(Venue venue, int id) {
+		Venue model=repo.findById(id).get();
+		model.setId(venue.getId());
+		model.setDes(venue.getDes());
+		model.setAvail(venue.getAvail());
+		model.setLink(venue.getLink());
+		model.setLocation(venue.getLocation());
+		model.setName(venue.getName());
+		model.setPrice(venue.getPrice());
+		
+		repo.save(model);
+		return model;
+	};
 }
