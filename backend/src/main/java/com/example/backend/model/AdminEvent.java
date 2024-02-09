@@ -15,7 +15,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AdminEvent {
     @Id
-    @Column(name="aid")
     int aid;
    
     String type;

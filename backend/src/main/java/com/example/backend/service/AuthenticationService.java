@@ -58,4 +58,9 @@ public class AuthenticationService {
 		return userRepository.findAll();
 	}
 
+        public boolean deleteUser(long id){
+                userRepository.deleteById(id);
+                return true;
+        }
+
 }
