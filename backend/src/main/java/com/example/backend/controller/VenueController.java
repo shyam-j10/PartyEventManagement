@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/api/v1/auth/venues")
+@RequestMapping("/api/v1/auth/admin/venues")
 public class VenueController {
     @Autowired
     VenueService service;

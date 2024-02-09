@@ -10,6 +10,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import com.example.backend.dto.request.AuthenticationRequest;
 import com.example.backend.dto.request.RegisterRequest;
 import com.example.backend.dto.response.AuthenticationResponse;
+import com.example.backend.dto.response.RegisterResponse;
 import com.example.backend.model.Role;
 import com.example.backend.model.User;
 import com.example.backend.repository.UserRepo;
@@ -25,7 +26,7 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
 
-    public AuthenticationResponse register(RegisterRequest request) {
+    public RegisterResponse register(RegisterRequest request) {
         var user = User
                 .builder()
                 .name(request.getName())
@@ -36,9 +37,9 @@ public class AuthenticationService {
                 .build();
         userRepository.save(user);
         var jwtToken = jwtService.generateToken(user);
-        return AuthenticationResponse.builder()
+        return RegisterResponse.builder()
                 .message("User Registered Successfully")
-                .token(jwtToken)
+                // .token(jwtToken)
                 .build();
     }
 

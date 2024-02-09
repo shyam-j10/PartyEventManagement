@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.backend.dto.request.AuthenticationRequest;
 import com.example.backend.dto.request.RegisterRequest;
 import com.example.backend.dto.response.AuthenticationResponse;
+import com.example.backend.dto.response.RegisterResponse;
 import com.example.backend.model.User;
 import com.example.backend.service.AuthenticationService;
 
@@ -28,7 +29,7 @@ public class AuthenticationController {
     private final AuthenticationService authenticationService;
 
     @PostMapping("/register")
-    public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
+    public ResponseEntity<RegisterResponse> register(@RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authenticationService.register(request));
     }
 

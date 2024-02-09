@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.backend.model.AdminEvent;
 import com.example.backend.service.AdminEventService;
-import com.example.backend.service.EventService;
 
 @RestController
 @CrossOrigin("*")

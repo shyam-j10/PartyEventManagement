@@ -19,7 +19,7 @@ import com.example.backend.service.EventService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("api/v1/auth/events")
+@RequestMapping("api/v1/auth/user/events")
 public class EventController {
 
     @Autowired
