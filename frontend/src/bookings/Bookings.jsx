@@ -5,13 +5,20 @@ import {editProducts,removeCart} from '../redux/actions/action'
 import Navbar from '../navbar/Navbar'
 import "./Bookings.css"
 import { Link } from 'react-router-dom'
+import axios from 'axios'
 import ApprovedBookings from './ApprovedBookings'
 import Footer from '../footer/Footer'
 export default function Bookings() {
-    
+    const [bookings,setBookings]=useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8081/api/v1/auth/user/bookings")
+    .then((r)=>{
+      setBookings(r.data)
+    })
+  }, [])
 
     const allProd=useSelector(state=>state)
-    const bookings=allProd.allProducts.cartProduct
+    // const bookings=allProd.allProducts.cartProduct
     function filter_status(event) {
       return event.statu == "Pending";
   }
@@ -35,7 +42,7 @@ export default function Bookings() {
       <div><center><h1 id='s-title'>PENDING BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
-          {filtered.map(booking=>
+          {bookings.map(booking=>
               <div className='booking'>
                   <img src={booking.link}/>
                   <h1 id='s-name'>{booking.name}</h1>

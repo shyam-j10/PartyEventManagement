@@ -58,14 +58,16 @@ public class User implements UserDetails {
         return password;
     }
     
-//    public String getName() {
-//    	return name;
-//    }
-//    
-//    public Long getMobile()
-//    {
-//    	return mobile;
-//    }
+  
+   public String getName() {
+   	return name;
+   }
+   
+ 
+   public Long getMobile()
+   {
+   	return mobile;
+   }
 
     @Override
     public boolean isAccountNonExpired() {

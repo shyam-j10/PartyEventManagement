@@ -27,17 +27,19 @@ function Login() {
   const[name,setName]=useState("");
 
   const handleLogin = (e) => {
-    e.preventDefault();
-    console.log(formData)
-    axios.post("http://localhost:8081/api/v1/auth/authenticate",formData)
-    .then((r)=>{alert(r.data.message)});
-    
-    setPop(true);
-    console.log(pop);
-    localStorage.setItem("name",name)
-    if(name.includes("@admin")){
+    if(formData.email.includes("@admin")){
       navigate("/dashboard")
     }else{
+      e.preventDefault();
+      console.log(formData)
+      axios.post("http://localhost:8081/api/v1/auth/authenticate",formData)
+      .then((r)=>{
+        console.log(r)
+        alert(r.data.message)
+      });
+      setPop(true);
+      
+      localStorage.setItem("name",formData.email)
       navigate("/")
     }
   };

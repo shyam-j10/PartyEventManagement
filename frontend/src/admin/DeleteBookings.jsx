@@ -20,6 +20,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems, tertiaryListItems } from '../dashboard/listItems';
 import { useState } from 'react'
+import axios from 'axios'
 import {useSelector,useDispatch} from 'react-redux'
 import {editProducts,removeCart} from '../redux/actions/action'
 import "../bookings/Bookings.css"
@@ -86,13 +87,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function DeleteBookings() {
+  const [bookings,setBookings]=useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8081/api/v1/auth/user/bookings")
+    .then((r)=>{
+      setBookings(r.data)
+    })
+  },[])
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
     
     const allProd=useSelector(state=>state)
-    const bookings=allProd.allProducts.cartProduct
+    // const bookings=allProd.allProducts.cartProduct
     const dispatch=useDispatch()
     const [num,setNum]=useState(true)
     useEffect(() => {
@@ -194,10 +202,12 @@ export default function DeleteBookings() {
                 <p id='s-price'>{booking.statu}</p>
                 <button onClick={()=>{
 
-                let result=confirm("Are you sure of cancelling the booking")
-                if(result){
-                  dispatch(removeCart(booking))}
-                }}>Cancel</button>
+                // let result=confirm("Are you sure of cancelling the booking")
+                // if(result){
+                  // dispatch(removeCart(booking))}
+                  axios.delete(`http://localhost:8081/api/v1/user/bookings/${booking.bid}`)
+                }}
+                >Cancel</button>
               </div>
           )}
           </div> :" No bookings"

@@ -20,6 +20,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems, tertiaryListItems } from '../dashboard/listItems';
 import { useState } from 'react'
+import axios from 'axios'
 import {useSelector,useDispatch} from 'react-redux'
 import {editProducts,removeCart} from '../redux/actions/action'
 import "../bookings/Bookings.css"
@@ -86,13 +87,20 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const defaultTheme = createTheme();
 
 export default function ApproveBookings() {
+  const [bookings,setBookings]=useState([]);
+  useEffect(() => {
+    axios.get("http://localhost:8081/api/v1/auth/user/bookings")
+    .then((r)=>{
+      setBookings(r.data)
+    })
+  }, [])
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
     
     const allProd=useSelector(state=>state)
-    const bookings=allProd.allProducts.cartProduct
+    // const bookings=allProd.allProducts.cartProduct
     const dispatch=useDispatch()
     const [num,setNum]=useState(true)
     useEffect(() => {
@@ -187,14 +195,20 @@ export default function ApproveBookings() {
           {bookings.map(booking=>
               <div className='booking'>
                   <img src={booking.link}/>
-                  <h1 id='s-name'>{booking.name}</h1>
-                <p id='s-price'>₹{booking.price}</p> 
-                <p id='s-price'>{booking.location}</p> 
-                <p id='s-price'>{booking.dur}</p>
-                <p id='s-price'>{booking.statu}</p>
+                <h1 id='s-name'>{booking.type}</h1>
+              <p id='s-price'>{booking.host}</p> 
+              <p id='s-price'>{booking.location}</p> 
+              <p id='s-price'>{booking.date}</p>
+              {/* <p id='s-price'>{booking.ven}</p> */}
+
+              <p id='s-price'>{booking.status}</p>
                 <button onClick={()=>
-                  dispatch(editProducts(booking))
-                  }>Approve</button>
+                  // dispatch(editProducts(booking))
+                  axios.put(`http://localhost:8081/api/v1/auth/user/bookings/${booking.bid}`,booking)
+                  }>
+                    {/* {booking.status=="pending"?"Approve":"Pending"} */}
+                    Approve
+                    </button>
               </div>
           )}
           </div> :" No bookings"

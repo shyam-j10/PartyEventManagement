@@ -9,8 +9,11 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import { Link, useNavigate } from 'react-router-dom';
 
+// const navigate=useNavigate();
 export const mainListItems = (
+  
   <React.Fragment>
     <ListItemButton>
       <ListItemIcon>
@@ -54,7 +57,11 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Add Venues" />
+    <Link to='/venueForm'>
+
+      <ListItemText primary="Add Venues"/>
+    </Link>
+
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
@@ -80,7 +87,10 @@ export const tertiaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
+      <Link to='/eventForm'>
+
       <ListItemText primary="Add Events" />
+      </Link>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>

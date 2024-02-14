@@ -57,11 +57,11 @@ function Navbar() {
             Home
           </Link>
         </li> */}
-        <li className="nav__item">
+        {/* <li className="nav__item">
           <Link to="/bookings" className="nav__link" onClick={(e)=>e.preventDefault}>
             Bookings
           </Link>
-        </li>
+        </li> */}
         <li className="nav__item">
           <Link to="/venues" className="nav__link">
             Venues
@@ -88,18 +88,18 @@ function Navbar() {
           <Link to ="/login" className="nav__link">Login</Link>
         </li>
         }
-        {/* {
+        {
           pop?
         <li className="nav__item">
           <Link to ="/" className="nav__link" onClick={handleLogout}>Logout</Link>
         </li>:""
-        } */}
-        {
+        }
+        {/* {
           pop?
         <li className="nav__item">
           <Link to ="/login" className="nav__link">Login as Admin</Link>
         </li>:""
-        }
+        } */}
         {/* {
             localStorage.getItem("name")== undefined?
             <li className="nav__item">

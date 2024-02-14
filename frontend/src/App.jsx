@@ -19,6 +19,8 @@ import ViewBookings from './admin/ViewBookings'
 import ApprovedBookings from './bookings/ApprovedBookings'
 import { UserContext } from './context/context'
 import Contact from './contact/Contact'
+import VenueForm from './crudAdmin/VenueForm'
+import EventForm from './crudAdmin/EventForm'
 
 // import HomeNavbar from './navbar/HomeNavbar'
 
@@ -49,6 +51,8 @@ function App() {
           <Route path='/approvedBookings' element={<ApprovedBookings/>}></Route>
           <Route path='/deleteBookings' element={<DeleteBookings/>}></Route>
           <Route path='/viewBookings' element={<ViewBookings/>}></Route>
+          <Route path='/venueForm' element={<VenueForm/>}></Route>
+          <Route path='/eventForm' element={<EventForm/>}></Route>
           
         </Routes>
 
