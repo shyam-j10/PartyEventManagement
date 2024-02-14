@@ -38,10 +38,8 @@ public class EventService {
 		model.setLink(event.getLink());
 		model.setPeop(event.getPeop());
 		model.setTime(event.getTime());
-		model.setStatus(event.getStatus());
 		model.setType(event.getType());
-		model.setUser(event.getUser());
-		model.setVenue(event.getVenue());
+        model.setDes(event.getDes());
 		
 		repo.save(model);
 		return model;

@@ -36,7 +36,7 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .build();
         userRepository.save(user);
-        var jwtToken = jwtService.generateToken(user);
+        // var jwtToken = jwtService.generateToken(user);
         return RegisterResponse.builder()
                 .message("User Registered Successfully")
                 // .token(jwtToken)

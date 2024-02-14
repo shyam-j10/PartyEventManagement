@@ -14,29 +14,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.backend.model.AdminEvent;
-import com.example.backend.service.AdminEventService;
+import com.example.backend.model.Bookings;
+import com.example.backend.service.BookingService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("api/v1/auth/admin/events")
-public class AdminEventController {
+@RequestMapping("api/v1/auth/user/bookings")
+public class BookingController {
+
     @Autowired
-    AdminEventService service;
+    BookingService service;
 
 
     @PostMapping("")
-    public boolean addAdminEvent(@RequestBody AdminEvent event) {
+    public boolean addEvent(@RequestBody Bookings event) {
         return service.addEvent(event);
     }
 
     @GetMapping("")
-    public List<AdminEvent> getAllEvents() {
+    public List<Bookings> getAllEvents() {
         return service.getAllEvents();
     }
 
     @GetMapping("/{id}")
-    public Optional<AdminEvent> getEventById(@PathVariable int id) {
+    public Optional<Bookings> getEventById(@PathVariable int id) {
         return service.getEventById(id);
     }
 
@@ -46,7 +47,8 @@ public class AdminEventController {
     }
 
     @PutMapping("/{id}")
-    public AdminEvent putEvent(@RequestBody AdminEvent event,@PathVariable int id) {
+    public Bookings putEvent(@RequestBody Bookings event,@PathVariable int id) {
         return service.updateEvent(event, id);
     }
+    
 }

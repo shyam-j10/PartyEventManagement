@@ -18,21 +18,21 @@ function Navbar() {
     navigate("/")
   }
 
-  useEffect(()=>{
-    console.log(pop);
-  })
-
-  //  useEffect((e) => {
-    // e.preventDefault()
-    // window.addEventListener("scroll",()=>{
-    //   if(window.scrollY<900){
-    //     console.log(window.scrollY)
-    //     setScroll("nav");
-    //   }else{
-    //     setScroll("nav-fixed");
-    //   }
-    //   })
+  // useEffect(()=>{
+  //   console.log(pop);
   // })
+
+   useEffect(() => {
+    // e.preventDefault()
+    window.addEventListener("scroll",()=>{
+      if(window.scrollY<900){
+        console.log(window.scrollY)
+        setScroll("nav");
+      }else{
+        setScroll("nav-fixed");
+      }
+      })
+  })
  
 
 

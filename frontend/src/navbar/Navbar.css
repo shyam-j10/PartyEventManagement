@@ -53,6 +53,7 @@ body {
   align-items: center;
   justify-content: space-around;
   transition: 0.5s;
+  z-index: 10;
   height: 8vh;
   width: 100vw;
   background: rgb(175,148,83);

@@ -9,6 +9,10 @@ export default function Admin() {
             <Link to='/viewBookings' id='a-link'>View All Bookings</Link>
             <Link to='/approveBookings' id='a-link'>Approve Bookings</Link>
             <Link to='/deleteBookings'id='a-link'>Delete Bookings</Link>
+            {/* <Link to='/deleteBookings'id='a-link'>Add Venues</Link>
+            <Link to='/deleteBookings'id='a-link'>View All Venues</Link>
+            <Link to='/deleteBookings'id='a-link'>Edit Venues</Link>
+            <Link to='/deleteBookings'id='a-link'>Delete Venues</Link> */}
         </div>
     </>
   )

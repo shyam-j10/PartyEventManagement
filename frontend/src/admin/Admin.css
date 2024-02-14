@@ -1,9 +1,12 @@
 .admin{
     background-color:burlywood;
-    padding: 10px;
+    /* padding: 10px; */
     margin-top: 20px;
     float: left;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2%;
 }
 #a-link{
     text-decoration: none;

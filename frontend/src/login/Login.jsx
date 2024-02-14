@@ -1,5 +1,6 @@
 import React from 'react';
 import './Login.css';
+import axios from 'axios';
 import email from '../assets/email.png';
 import password from '../assets/password.png';
 import loginImg from '../assets/loginImg.jpeg';
@@ -10,12 +11,27 @@ import { UserContext } from '../context/context';
 
 function Login() {
 
+  const [formData, setFormData] = useState({
+    email: '',
+    password: ''
+  });
+
+  const handleInputChange = (field, value) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [field]: value,
+    }))};
+
   const[pop,setPop]=useContext(UserContext);
   const navigate = useNavigate();
   const[name,setName]=useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
+    console.log(formData)
+    axios.post("http://localhost:8081/api/v1/auth/authenticate",formData)
+    .then((r)=>{alert(r.data.message)});
+    
     setPop(true);
     console.log(pop);
     localStorage.setItem("name",name)
@@ -48,11 +64,11 @@ function Login() {
         </div> */}
         <div className='login-inputs'>
           <img src={email} alt='' />
-          <input type='email' placeholder='Email id' onChange={(e)=>{setName(e.target.value)}} />
+          <input type='email' placeholder='Email id' onChange={(e) => handleInputChange('email', e.target.value)} />
         </div>
         <div className='login-inputs'>
           <img src={password} alt='' />
-          <input type='password' placeholder='Password' />
+          <input type='password' placeholder='Password' onChange={(e) => handleInputChange('password', e.target.value)} />
         </div>
       </div>
       <div className='login-forgot-password'>

@@ -19,15 +19,14 @@ import com.example.backend.service.EventService;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("api/v1/auth/user/events")
+@RequestMapping("api/v1/auth/admin/events")
 public class EventController {
-
     @Autowired
     EventService service;
 
 
     @PostMapping("")
-    public boolean addEvent(@RequestBody Event event) {
+    public boolean addAdminEvent(@RequestBody Event event) {
         return service.addEvent(event);
     }
 
@@ -50,5 +49,4 @@ public class EventController {
     public Event putEvent(@RequestBody Event event,@PathVariable int id) {
         return service.updateEvent(event, id);
     }
-    
 }

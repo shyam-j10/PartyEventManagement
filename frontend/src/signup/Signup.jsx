@@ -1,28 +1,30 @@
 // Signup.jsx
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Signup.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import emailIcon from '../assets/email.png';
 import userIcon from '../assets/person.png';
 import passwordIcon from '../assets/password.png';
 import phoneIcon from '../assets/phoneIcon.png';
 import loginImg from '../assets/loginImg.jpeg';
 function Signup() {
+  const navigate=useNavigate();
   const [formData, setFormData] = useState({
-    role: 'user',
+    // role: 'user',
     email: '',
-    username: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
+    name: '',
+    mobile: '',
+    password: ''
+    // confirmPassword: '',
   });
 
   const [errors, setErrors] = useState({
     email: '',
-    username: '',
-    phoneNumber: '',
-    password: '',
-    confirmPassword: '',
+    name: '',
+    mobile: '',
+    password: ''
+    // confirmPassword: '',
   });
 
   const validateEmail = () => {
@@ -34,18 +36,18 @@ function Signup() {
   };
 
   const validateUsername = () => {
-    if (!formData.username) {
-      setErrors((prevErrors) => ({ ...prevErrors, username: 'This field is required' }));
+    if (!formData.name) {
+      setErrors((prevErrors) => ({ ...prevErrors, name: 'This field is required' }));
     } else {
-      setErrors((prevErrors) => ({ ...prevErrors, username: '' }));
+      setErrors((prevErrors) => ({ ...prevErrors, name: '' }));
     }
   };
 
   const validatePhoneNumber = () => {
-    if (formData.phoneNumber.length !== 10 || !(/^\d+$/.test(formData.phoneNumber))) {
-      setErrors((prevErrors) => ({ ...prevErrors, phoneNumber: 'Invalid phone number' }));
+    if (formData.mobile.length !== 10 || !(/^\d+$/.test(formData.mobile))) {
+      setErrors((prevErrors) => ({ ...prevErrors, mobile: 'Invalid phone number' }));
     } else {
-      setErrors((prevErrors) => ({ ...prevErrors, phoneNumber: '' }));
+      setErrors((prevErrors) => ({ ...prevErrors, mobile: '' }));
     }
   };
 
@@ -75,34 +77,41 @@ function Signup() {
 
     if (field === 'email') {
       validateEmail();
-    } else if (field === 'username') {
+    } else if (field === 'name') {
       validateUsername();
-    } else if (field === 'phoneNumber') {
+    } else if (field === 'mobile') {
       validatePhoneNumber();
     } else if (field === 'password') {
       validatePassword();
-      // Validate confirm password whenever password changes
-      validateConfirmPassword();
-    } else if (field === 'confirmPassword') {
-      validateConfirmPassword();
+      // validateConfirmPassword();
     }
+    //  else if (field === 'confirmPassword') {
+    //   validateConfirmPassword();
+    // }
   };
 
   const handleSignUp = () => {
-    const requiredFields = ['email', 'username', 'phoneNumber', 'password', 'confirmPassword'];
-    const emptyFields = requiredFields.filter((field) => !formData[field]);
-
-    if (emptyFields.length > 0) {
-      setErrors((prevErrors) => ({ ...prevErrors, ...Object.fromEntries(emptyFields.map((field) => [field, 'This field is required'])) }));
-    } else {
-      // Implement your sign-up logic here
-      // Check if there are no errors
-      const errorValues = Object.values(errors);
-      if (errorValues.every((error) => error === '')) {
-        // Your sign-up logic goes here
-        // If successful, you can show a success message or navigate to another page
-      }
+    console.log(formData);
+    axios.post("http://localhost:8081/api/v1/auth/register",formData)
+    .then((r)=>{alert(r.data.message)});
+    navi
+    const requiredFields = ['email', 'name', 'mobile', 'password'
+    // , 'confirmPassword'
+  ];
+  const emptyFields = requiredFields.filter((field) => !formData[field]);
+  
+  if (emptyFields.length > 0) {
+    setErrors((prevErrors) => ({ ...prevErrors, ...Object.fromEntries(emptyFields.map((field) => [field, 'This field is required'])) }));
+  } else {
+    // Implement your sign-up logic here
+    // Check if there are no errors
+    const errorValues = Object.values(errors);
+    if (errorValues.every((error) => error === '')) {
+      // Your sign-up logic goes here
+      // If successful, you can show a success message or navigate to another page
     }
+  }
+  navigate("/login")
   };
 
   return (
@@ -127,7 +136,7 @@ function Signup() {
           <img src={userIcon} alt='' />
           <select
             value={formData.role}
-            onChange={(e) => handleInputChange('role', e.target.value)}
+            // onChange={(e) => handleInputChange('role', e.target.value)}
             >
             <option value='user'>User</option>
             <option value='admin'>Admin</option>
@@ -150,7 +159,7 @@ function Signup() {
             type='text'
             placeholder='Username'
             value={formData.username}
-            onChange={(e) => handleInputChange('username', e.target.value)}
+            onChange={(e) => handleInputChange('name', e.target.value)}
             onBlur={validateUsername}
             />
           <div className={`error-message ${errors.username === '' ? 'valid' : 'invalid'}`}>{errors.username}</div>
@@ -160,8 +169,8 @@ function Signup() {
           <input
             type='tel'
             placeholder='Phone Number'
-            value={formData.phoneNumber}
-            onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+            value={formData.mobile}
+            onChange={(e) => handleInputChange('mobile', e.target.value)}
             onBlur={validatePhoneNumber}
             />
           <div className={`error-message ${errors.phoneNumber === '' ? 'valid' : 'invalid'}`}>{errors.phoneNumber}</div>
@@ -177,7 +186,7 @@ function Signup() {
             />
           <div className={`error-message ${errors.password === '' ? 'valid' : 'invalid'}`}>{errors.password}</div>
         </div>
-        <div className='signup-inputs'>
+        {/* <div className='signup-inputs'>
           <img src={passwordIcon} alt='' />
           <input
             type='password'
@@ -187,7 +196,7 @@ function Signup() {
             onBlur={validateConfirmPassword}
             />
           <div className={`error-message ${errors.confirmPassword === '' ? 'valid' : 'invalid'}`}>{errors.confirmPassword}</div>
-        </div>
+        </div> */}
       </div>
 
       <div className='signup-submit-container'>

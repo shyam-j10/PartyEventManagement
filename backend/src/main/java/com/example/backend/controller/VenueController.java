@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1/auth/admin/venues")
 public class VenueController {
     @Autowired

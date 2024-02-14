@@ -18,7 +18,7 @@ export default function Venues() {
   return (
     <>
     <Navbar/>
-        <div><center><h1 id='s-title'>VENUES</h1></center></div>
+        <div><center><h1 id='s-title'>Bookings</h1></center></div>
         <div className='venues'>
         
         {events.map(venue=>
