@@ -5,6 +5,7 @@ import "./Venues.css"
 import axios from 'axios'
 // import { cartProducts} from '../redux/actions/action'
 import Footer from '../footer/Footer'
+import { useNavigate } from 'react-router-dom'
 export default function Venues() {
   // const events=[{id:1,name:"Outdoor Wedding Party",link:"https://media.weddingz.in/images/7941daefa912e70969e8804792325945/top-5-outdoor-wedding-venues-in-gurgaon-for-you-to-get-married-in.jpg",price:"150000",location:"Thrissur",dur:"",peop:"",phon:"",statu:"Pending"},
   //               {id:2,name:"Lagoon Wedding Hall",link:"https://image.wedmegood.com/resized/450X/uploads/member/3391766/1661512242_WhatsApp_Image_2022_08_26_at_4.29.53_PM__2_.jpeg",price:"80000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"},
@@ -17,6 +18,7 @@ export default function Venues() {
       setVenues(r.data);
     })
   }, [])
+  const navigate=useNavigate();
 
   
   
@@ -34,6 +36,7 @@ export default function Venues() {
                <p id='s-price'>{venue.location}</p> 
                <button onClick={()=>{
                   localStorage.setItem('venue',JSON.stringify(venue));
+                  navigate("/services")
                 }}>Choose Venue</button>
             </div>
         )}

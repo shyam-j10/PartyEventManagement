@@ -15,7 +15,7 @@ export default function Bookings() {
     .then((r)=>{
       setBookings(r.data)
     })
-  }, [])
+  })
 
     const allProd=useSelector(state=>state)
     // const bookings=allProd.allProducts.cartProduct
@@ -44,14 +44,13 @@ export default function Bookings() {
           <div className='bookings'>
           {bookings.map(booking=>
               <div className='booking'>
-                  <img src={booking.link}/>
-                  <h1 id='s-name'>{booking.name}</h1>
-                <p id='s-price'>₹{booking.price}</p> 
-                <p id='s-price'>{booking.location}</p> 
-                <p id='s-price'>Time:{booking.dur}</p>
-                <p id='s-price'>No of Peoples:{booking.peop}</p>
-                <p id='s-price'>Phone Number:{booking.phon}</p>
-                <p id='s-price'>Status:{booking.statu}</p>
+                  <img src={booking.vlink}/>
+                <p id='s-price'>Event:{booking.event}</p> 
+                <p id='s-price'>Venue:{booking.venue}</p> 
+                <p id='s-price'>Service:{booking.service}</p>
+                <p id='s-price'>ServicePrice:{booking.sprice}</p>
+                <p id='s-price'>VenuePrice:{booking.vprice}</p>
+                <p id='s-price'>Status:{booking.status}</p>
                 {/* <p id='s-price'>{booking.statu}</p> */}
                 {/* <button onClick={()=>
                   dispatch(editProducts(booking))
@@ -60,7 +59,7 @@ export default function Bookings() {
 
                   let result=confirm("Are you sure of cancelling the booking")
                   if(result){
-                    dispatch(removeCart(booking))
+                    axios.delete(`http://localhost:8081/api/v1/auth/user/bookings/${booking.bid}`)
                   }
                 }
                 }>Cancel</button>

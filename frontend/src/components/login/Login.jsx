@@ -27,20 +27,23 @@ function Login() {
   const[name,setName]=useState("");
 
   const handleLogin = (e) => {
-    if(formData.email.includes("@admin")){
-      navigate("/dashboard")
+    e.preventDefault();
+    if(formData.email==="shyam@admin.com"&& formData.password==="shyam123"){
+      navigate("/viewBookings")
     }else{
-      e.preventDefault();
-      console.log(formData)
       axios.post("http://localhost:8081/api/v1/auth/authenticate",formData)
-      .then((r)=>{
-        console.log(r)
-        alert(r.data.message)
+      .then(r=>{
+        console.log(r.status);
+        if(r.status==200){
+          alert(r.data.message)
+          localStorage.setItem("name",formData.email)
+          navigate("/")
+        }else{
+          alert("Email and password does not match")
+        }
       });
       setPop(true);
       
-      localStorage.setItem("name",formData.email)
-      navigate("/")
     }
   };
   return (

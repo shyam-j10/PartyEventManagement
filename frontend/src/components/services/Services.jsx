@@ -20,12 +20,23 @@ export default function Services() {
     })
 
     const handleBookings =()=>{
-        let s=localStorage.getItem("services");
-        let v=localStorage.getItem("venue");
-        let e=localStorage.getItem("event");
-        // let status="Pending";
-        let arr={"service":s,"venue":v,"event":e,"status":"Pending"}
-        axios.post("http://localhost:8081/api/v1/auth/user/bookings",arr);
+        let se=localStorage.getItem("services");
+        let ve=localStorage.getItem("venue");
+        let ev=localStorage.getItem("event");
+        let s=JSON.parse(se);
+        let v=JSON.parse(ve);
+        let e=JSON.parse(ev);
+        if(s==null||v==null||e==null){
+            alert("Choose all three services,venues,events")
+        }else{
+
+            let arr={"service":s.name,"venue":v.name,"event":e.type,
+            "slink":s.link,"elink":e.link,"vlink":v.link,
+            "status":"Pending","sprice":s.price,"vprice":v.price}
+            console.log(arr);
+            axios.post("http://localhost:8081/api/v1/auth/user/bookings",arr);
+            alert("Booking Requested")
+        }
     }
 
     
@@ -38,15 +49,15 @@ export default function Services() {
         {serv.map(serv=>
             <div className='venue'>
                 <img src={serv.link}/>
-                <h1 id='s-name'>{serv.name}</h1>
-               <i><p id='s-desc'>${serv.price}</p></i> 
+                <h1 id='s-name'>Service:{serv.name}</h1>
+               <i><p id='s-desc'>Price:${serv.price}</p></i> 
                <button onClick={
                 ()=>{
                     localStorage.setItem('services',JSON.stringify(serv));
                     handleBookings();
                 }
                }
-               >Choose</button>
+               >Request Booking</button>
             </div>
         )}
         </div>

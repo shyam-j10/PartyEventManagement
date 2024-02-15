@@ -62,19 +62,19 @@ function Navbar() {
             Events
           </Link>
         </li>
-        <li className="nav__item">
+        {/* <li className="nav__item">
           <Link to="/venues" className="nav__link">
             Venues
           </Link>
-        </li>
+        </li> */}
         <li className="nav__item">
           <Link to="/contact" className="nav__link">
             Contact
           </Link>
         </li>
         <li className="nav__item">
-          <Link to="/services" className="nav__link">
-            Services
+          <Link to="/bookings" className="nav__link">
+            Boookings
           </Link>
         </li>
         {/* <li className="nav__item">

@@ -3,6 +3,7 @@ import Navbar from '../navbar/Navbar'
 import "./Event.css"
 import axios from 'axios'
 import Footer from '../footer/Footer'
+import { Navigate, useNavigate } from 'react-router-dom'
 export default function Event() {
   
   const [events,setEvents]=useState([]);
@@ -13,6 +14,7 @@ export default function Event() {
     })
   }, [])
 
+  const navigate=useNavigate();
   
   
   return (
@@ -26,10 +28,11 @@ export default function Event() {
                 <img src={e.link}/>
                 <h1 id='s-name'>{e.type}</h1>
                <p id='s-price'>{e.des}</p> 
-               <p id='s-price'>{e.peop}</p> 
-               <p id='s-price'>{e.time}</p> 
+               <p id='s-price'>People:{e.peop}</p> 
+               <p id='s-price'>Time:{e.time}</p> 
                <button onClick={()=>{
                   localStorage.setItem('event',JSON.stringify(e));
+                  navigate("/venues")
                 }}>Choose Event</button>
             </div>
         )}

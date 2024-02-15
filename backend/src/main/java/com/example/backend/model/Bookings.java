@@ -33,6 +33,11 @@ public class Bookings {
     String service;
     String venue;
     String event;
+    String sprice;
+    String vprice;
+    String slink;
+    String vlink;
+    String elink;
     // @OneToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name = "sid")
     // public Services sevice;

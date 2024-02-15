@@ -43,7 +43,7 @@ public class BookingService {
 		// model.setLink(event.getLink());
 		// model.setPeop(event.getPeop());
 		// model.setTime(event.getTime());
-		model.setStatus("approved");
+		model.setStatus("Approved");
 		// model.setType(event.getType());
 		// model.setHost(event.getHost());
 		// model.setUser(event.getUser());
