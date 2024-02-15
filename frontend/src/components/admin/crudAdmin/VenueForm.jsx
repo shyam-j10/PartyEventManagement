@@ -58,7 +58,7 @@ function VenueForm() {
         
         <div className="form-group">
           <label>Description:</label>
-          <input type="text" name="description" value={formData.des} onChange={handleChange} required/>
+          <input type="text" name="description" value={formData.des} onChange={handleChange}/>
         </div>
         
         <div className="form-group">

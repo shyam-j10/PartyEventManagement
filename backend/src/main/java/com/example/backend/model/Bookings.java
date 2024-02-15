@@ -23,17 +23,27 @@ public class Bookings {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     int bid;
    
-    String type;
-    String host;
-    String link;
-    String peop;
-    String date;
-    String time;
+    // String type;
+    // String host;
+    // String link;
+    // String peop;
+    // String date;
+    // String time;
     String status;
+    String service;
+    String venue;
+    String event;
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "sid")
+    // public Services sevice;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "vid")
-    public Venue venue;
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "eid")
+    // public Event event;
+
+    // @OneToOne(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "vid")
+    // public Venue venue;
 
     // @OneToOne(cascade = CascadeType.ALL)
     // @JoinColumn(name="uid")

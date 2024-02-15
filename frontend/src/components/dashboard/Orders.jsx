@@ -11,10 +11,10 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import { useState,useEffect } from 'react';
 
-const events=[{id:1,name:"Outdoor Wedding Party",link:"https://media.weddingz.in/images/7941daefa912e70969e8804792325945/top-5-outdoor-wedding-venues-in-gurgaon-for-you-to-get-married-in.jpg",price:"150000",location:"Thrissur",dur:"",peop:"",phon:"",statu:"Pending"},
-                {id:2,name:"Lagoon Wedding Hall",link:"https://image.wedmegood.com/resized/450X/uploads/member/3391766/1661512242_WhatsApp_Image_2022_08_26_at_4.29.53_PM__2_.jpeg",price:"80000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"},
-                {id:3,name:"French Town Party Hall",link:"https://image.wedmegood.com/resized/800X/uploads/member/2876203/1646646852_WhatsApp_Image_2022_02_08_at_19.36.31.jpeg",price:"100000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"}
-              ]
+// const events=[{id:1,name:"Outdoor Wedding Party",link:"https://media.weddingz.in/images/7941daefa912e70969e8804792325945/top-5-outdoor-wedding-venues-in-gurgaon-for-you-to-get-married-in.jpg",price:"150000",location:"Thrissur",dur:"",peop:"",phon:"",statu:"Pending"},
+//                 {id:2,name:"Lagoon Wedding Hall",link:"https://image.wedmegood.com/resized/450X/uploads/member/3391766/1661512242_WhatsApp_Image_2022_08_26_at_4.29.53_PM__2_.jpeg",price:"80000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"},
+//                 {id:3,name:"French Town Party Hall",link:"https://image.wedmegood.com/resized/800X/uploads/member/2876203/1646646852_WhatsApp_Image_2022_02_08_at_19.36.31.jpeg",price:"100000",location:"Coimbatore",dur:"",peop:"",phon:"",statu:"Pending"}
+//               ]
 
 function preventDefault(event) {
   event.preventDefault();
@@ -25,6 +25,7 @@ export default function Orders() {
   const[venues,setVenues]=useState([]);
   const[events,setEvents]=useState([]);
   useEffect(() => {
+    
     axios.get("http://localhost:8081/api/v1/auth/user/bookings")
     .then((r)=>{
       console.log(r.data)
@@ -56,7 +57,6 @@ var approved=bookings.filter(filter_status1);
       <Table size="small">
         <TableHead>
           <TableRow>
-            {/* <TableCell></TableCell> */}
             <TableCell>Type</TableCell>
             <TableCell>Date</TableCell>
             <TableCell>Time</TableCell>
@@ -82,7 +82,6 @@ var approved=bookings.filter(filter_status1);
       <Table size="small">
         <TableHead>
         <TableRow>
-            {/* <TableCell></TableCell> */}
             <TableCell>Type</TableCell>
             <TableCell>Date</TableCell>
             <TableCell>Time</TableCell>
@@ -109,7 +108,6 @@ var approved=bookings.filter(filter_status1);
       <Table size="small">
         <TableHead>
         <TableRow>
-            {/* <TableCell></TableCell> */}
             <TableCell>Name</TableCell>
             <TableCell>Address</TableCell>
             <TableCell>Contact Number</TableCell>
@@ -120,14 +118,14 @@ var approved=bookings.filter(filter_status1);
         </TableHead>
         <TableBody>
           {venues.map((row) => (
-            <TableRow key={row.id}>
+            <TableRow key={row.vid}>
               <TableCell>{row.name}</TableCell>
-              {/* <TableCell>{row.price}</TableCell> */}
               <TableCell>{row.address}</TableCell>
               <TableCell>{row.contactNum}</TableCell>
               <TableCell>{row.capacity}</TableCell>
               <TableCell>{row.avail}</TableCell>
               <TableCell align="right">{`$${row.price}`}</TableCell>
+              <button onClick={()=>axios.delete(`http://localhost:8081/api/v1/auth/admin/venues/${row.vid}`)}>Delete</button>
             </TableRow>
           ))}
         </TableBody>
@@ -137,32 +135,26 @@ var approved=bookings.filter(filter_status1);
       <Table size="small">
         <TableHead>
           <TableRow>
-            {/* <TableCell></TableCell> */}
-            <TableCell>Name</TableCell>
-            <TableCell>Location</TableCell>
+            <TableCell>Type</TableCell>
+            <TableCell>Description</TableCell>
             <TableCell>No. of Peoples</TableCell>
-            <TableCell>Phone Number</TableCell>
-            <TableCell>Status</TableCell>
-            <TableCell align="right">Price</TableCell>
+            <TableCell>Time</TableCell>
+            
           </TableRow>
         </TableHead>
         <TableBody>
           {events.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.name}</TableCell>
-              {/* <TableCell>{row.price}</TableCell> */}
-              <TableCell>{row.location}</TableCell>
+            <TableRow key={row.eid}>
+              <TableCell>{row.type}</TableCell>
+              <TableCell>{row.des}</TableCell>
               <TableCell>{row.peop}</TableCell>
-              <TableCell>{row.phon}</TableCell>
-              <TableCell>{row.statu}</TableCell>
-              <TableCell align="right">{`$${row.price}`}</TableCell>
+              <TableCell>{row.time}</TableCell>
+             
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      {/* <Link color="primary" href="#" onClick={preventDefault} sx={{ mt: 3 }}>
-        See more orders
-      </Link> */}
+      
     </React.Fragment>
   );
 }

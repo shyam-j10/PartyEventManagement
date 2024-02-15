@@ -1,26 +1,30 @@
 import { useState, } from 'react'
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import Home from './home/Home'
-import Navbar from './navbar/Navbar'
-import Services from './services/Services'
-import Login from './login/Login'
-import Signup from './signup/Signup'
-import Dashboard from './dashboard/Dashboard'
-import Gallery from './gallery/Gallery'
-import Venues from './venues/Venues'
+import Home from './components/home/Home'
+import Navbar from './components/navbar/Navbar'
+import Services from './components/services/Services'
+import Login from './components/login/Login'
+import Signup from './components/signup/Signup'
+import Dashboard from './components/dashboard/Dashboard'
+import Gallery from './components/gallery/Gallery'
+import Venues from './components/venues/Venues'
 import { Provider } from 'react-redux';
-import {store} from "./redux/reducer/store" 
-import Bookings from './bookings/Bookings'
-import Admin from './admin/Admin'
-import ApproveBookings from './admin/ApproveBookings'
-import DeleteBookings from './admin/DeleteBookings'
-import ViewBookings from './admin/ViewBookings'
-import ApprovedBookings from './bookings/ApprovedBookings'
-import { UserContext } from './context/context'
-import Contact from './contact/Contact'
-import VenueForm from './crudAdmin/VenueForm'
-import EventForm from './crudAdmin/EventForm'
+import {store} from "./components/redux/reducer/store" 
+import Bookings from './components/bookings/Bookings'
+import Admin from './components/admin/Admin'
+import ApproveBookings from './components/admin/ApproveBookings'
+import DeleteBookings from './components/admin/DeleteBookings'
+import ViewBookings from './components/admin/ViewBookings'
+import ApprovedBookings from './components/bookings/ApprovedBookings'
+import { UserContext } from './components/context/context'
+import Contact from './components/contact/Contact'
+import VenueForm from './components/admin/crudAdmin/VenueForm'
+import EventForm from './components/admin/crudAdmin/EventForm'
+import Event from './components/events/Event'
+import SideBar from './components/admin/sidebar/SideBar'
+import ViewEvents from './components/admin/ViewEvents'
+import ViewVenue from './components/admin/ViewVenue'
 
 // import HomeNavbar from './navbar/HomeNavbar'
 
@@ -43,6 +47,7 @@ function App() {
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/dashboard' element={<Dashboard/>}></Route>
           <Route path="/admin" element={<Admin/>}></Route>
+          <Route path="/events" element={<Event/>}></Route>
           <Route path='/photos' element={<Gallery/>}></Route>
           <Route path='/venues' element={<Venues/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
@@ -51,8 +56,11 @@ function App() {
           <Route path='/approvedBookings' element={<ApprovedBookings/>}></Route>
           <Route path='/deleteBookings' element={<DeleteBookings/>}></Route>
           <Route path='/viewBookings' element={<ViewBookings/>}></Route>
+          <Route path='/viewEvents' element={<ViewEvents/>}></Route>
+          <Route path='/viewVenues' element={<ViewVenue/>}></Route>
           <Route path='/venueForm' element={<VenueForm/>}></Route>
           <Route path='/eventForm' element={<EventForm/>}></Route>
+          <Route path='/sideBar' element={<SideBar/>}></Route>
           
         </Routes>
 

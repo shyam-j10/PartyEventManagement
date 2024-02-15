@@ -86,14 +86,19 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const defaultTheme = createTheme();
 
-export default function DeleteBookings() {
+export default function ApproveBookings() {
   const [bookings,setBookings]=useState([]);
   useEffect(() => {
     axios.get("http://localhost:8081/api/v1/auth/user/bookings")
     .then((r)=>{
       setBookings(r.data)
     })
-  },[])
+  }, [])
+  function filter_status(event) {
+    return event.status == "pending";
+  }
+
+  var filtered = bookings.filter(filter_status);  
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -192,22 +197,23 @@ export default function DeleteBookings() {
       <div><center><h1 id='s-title'>ALL BOOKINGS</h1></center></div>
         {num?
           <div className='bookings'>
-          {bookings.map(booking=>
+          {filtered.map(booking=>
               <div className='booking'>
                   <img src={booking.link}/>
-                  <h1 id='s-name'>{booking.name}</h1>
-                <p id='s-price'>₹{booking.price}</p> 
-                <p id='s-price'>{booking.location}</p> 
-                <p id='s-price'>{booking.dur}</p>
-                <p id='s-price'>{booking.statu}</p>
-                <button onClick={()=>{
+                <h1 id='s-name'>{booking.type}</h1>
+              <p id='s-price'>{booking.host}</p> 
+              <p id='s-price'>{booking.location}</p> 
+              <p id='s-price'>{booking.date}</p>
+              {/* <p id='s-price'>{booking.ven}</p> */}
 
-                // let result=confirm("Are you sure of cancelling the booking")
-                // if(result){
-                  // dispatch(removeCart(booking))}
-                  axios.delete(`http://localhost:8081/api/v1/user/bookings/${booking.bid}`)
-                }}
-                >Cancel</button>
+              <p id='s-price'>{booking.status}</p>
+                <button onClick={()=>
+                  // dispatch(editProducts(booking))
+                  axios.put(`http://localhost:8081/api/v1/auth/user/bookings/${booking.bid}`,booking)
+                  }>
+                    {/* {booking.status=="pending"?"Approve":"Pending"} */}
+                    Approve
+                    </button>
               </div>
           )}
           </div> :" No bookings"

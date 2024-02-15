@@ -57,11 +57,11 @@ function Navbar() {
             Home
           </Link>
         </li> */}
-        {/* <li className="nav__item">
-          <Link to="/bookings" className="nav__link" onClick={(e)=>e.preventDefault}>
-            Bookings
+        <li className="nav__item">
+          <Link to="/events" className="nav__link" onClick={(e)=>e.preventDefault}>
+            Events
           </Link>
-        </li> */}
+        </li>
         <li className="nav__item">
           <Link to="/venues" className="nav__link">
             Venues

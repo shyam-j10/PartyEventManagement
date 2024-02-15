@@ -14,14 +14,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Event {
+public class Services {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int eid;
-   
-    String type;
-    String link;
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    int sid; 
+    String name;
     String des;
-    String peop;
-    String time;
+    String price;
+    String link;
 }
