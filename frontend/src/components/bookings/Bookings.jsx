@@ -20,14 +20,14 @@ export default function Bookings() {
     const allProd=useSelector(state=>state)
     // const bookings=allProd.allProducts.cartProduct
     function filter_status(event) {
-      return event.statu == "Pending";
+      return event.status == "Pending";
   }
   
   var filtered = bookings.filter(filter_status);
     const dispatch=useDispatch()
     const [num,setNum]=useState(true)
     useEffect(() => {
-      if(bookings==null){
+      if(filtered==null){
         setNum(false)
       }else{
         setNum(true)
@@ -39,22 +39,21 @@ export default function Bookings() {
       <Navbar/>
 
       {/* <Link to='/approvedBookings'>Approved</Link> */}
-      <div><center><h1 id='s-title'>PENDING BOOKINGS</h1></center></div>
         {num?
+        <div>
+          
+      <div><center><h1 id='s-title'> BOOKINGS</h1></center></div>
           <div className='bookings'>
           {bookings.map(booking=>
               <div className='booking'>
                   <img src={booking.vlink}/>
-                <p id='s-price'>Event:{booking.event}</p> 
+                  <center>
+                  <p id='s-price'>Event:{booking.event}</p> 
                 <p id='s-price'>Venue:{booking.venue}</p> 
                 <p id='s-price'>Service:{booking.service}</p>
                 <p id='s-price'>ServicePrice:{booking.sprice}</p>
                 <p id='s-price'>VenuePrice:{booking.vprice}</p>
                 <p id='s-price'>Status:{booking.status}</p>
-                {/* <p id='s-price'>{booking.statu}</p> */}
-                {/* <button onClick={()=>
-                  dispatch(editProducts(booking))
-                  }>Approve</button> */}
                 <button onClick={()=>{
 
                   let result=confirm("Are you sure of cancelling the booking")
@@ -63,12 +62,14 @@ export default function Bookings() {
                   }
                 }
                 }>Cancel</button>
+                  </center>
+                
               </div>
           )}
-          </div> :" No bookings"
+          </div>
+          </div>:" No bookings"
       }
-      <ApprovedBookings/>
-      <Footer/>
+      {/* <ApprovedBookings/> */}
     </div>
   )
 }

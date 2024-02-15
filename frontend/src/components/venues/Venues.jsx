@@ -34,10 +34,13 @@ export default function Venues() {
                 <h1 id='s-name'>{venue.name}</h1>
                <p id='s-price'>₹{venue.price}</p> 
                <p id='s-price'>{venue.location}</p> 
+               <center>
                <button onClick={()=>{
                   localStorage.setItem('venue',JSON.stringify(venue));
                   navigate("/services")
                 }}>Choose Venue</button>
+               </center>
+               
             </div>
         )}
         </div>

@@ -49,8 +49,11 @@ export default function Services() {
         {serv.map(serv=>
             <div className='venue'>
                 <img src={serv.link}/>
+                <center>
                 <h1 id='s-name'>Service:{serv.name}</h1>
-               <i><p id='s-desc'>Price:${serv.price}</p></i> 
+                    <center></center>
+                    <i><p id='s-desc'>Price:${serv.price}</p></i> 
+               
                <button onClick={
                 ()=>{
                     localStorage.setItem('services',JSON.stringify(serv));
@@ -58,6 +61,8 @@ export default function Services() {
                 }
                }
                >Request Booking</button>
+                </center>
+               
             </div>
         )}
         </div>

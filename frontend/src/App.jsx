@@ -13,8 +13,7 @@ import { Provider } from 'react-redux';
 import {store} from "./components/redux/reducer/store" 
 import Bookings from './components/bookings/Bookings'
 import Admin from './components/admin/Admin'
-import ApproveBookings from './components/admin/ApproveBookings'
-import DeleteBookings from './components/admin/DeleteBookings'
+
 import ViewBookings from './components/admin/ViewBookings'
 import ApprovedBookings from './components/bookings/ApprovedBookings'
 import { UserContext } from './components/context/context'
@@ -28,7 +27,8 @@ import ViewVenue from './components/admin/ViewVenue'
 
 // import HomeNavbar from './navbar/HomeNavbar'
 
-
+import "./App.css"
+import Footer from './components/footer/Footer'
 function App() {
 
 
@@ -39,7 +39,11 @@ function App() {
     <Provider store={store}>
       <UserContext.Provider  value={[pop,setPop]}>
       <BrowserRouter>
+     
+      <div className="global">
+
         <Routes>
+ 
           <Route path='/' element={<Home/>}></Route>
           <Route path='/nav' element={<Navbar />}></Route>
           <Route path='/services' element={<Services/>}></Route>
@@ -52,17 +56,18 @@ function App() {
           <Route path='/venues' element={<Venues/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
           <Route path='/bookings' element={<Bookings/>}></Route>
-          <Route path='/approveBookings' element={<ApproveBookings/>}></Route>
           <Route path='/approvedBookings' element={<ApprovedBookings/>}></Route>
-          <Route path='/deleteBookings' element={<DeleteBookings/>}></Route>
           <Route path='/viewBookings' element={<ViewBookings/>}></Route>
           <Route path='/viewEvents' element={<ViewEvents/>}></Route>
           <Route path='/viewVenues' element={<ViewVenue/>}></Route>
           <Route path='/venueForm' element={<VenueForm/>}></Route>
           <Route path='/eventForm' element={<EventForm/>}></Route>
           <Route path='/sideBar' element={<SideBar/>}></Route>
-          
+       
         </Routes>
+        </div>
+        {/* <Footer/> */}
+
 
       </BrowserRouter>
       </UserContext.Provider>

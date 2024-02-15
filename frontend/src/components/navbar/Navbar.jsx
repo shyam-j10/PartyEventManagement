@@ -23,7 +23,7 @@ function Navbar() {
   // })
 
    useEffect(() => {
-    // e.preventDefault()
+    setName(localStorage.getItem("name"))
     window.addEventListener("scroll",()=>{
       if(window.scrollY<900){
         console.log(window.scrollY)
@@ -72,11 +72,14 @@ function Navbar() {
             Contact
           </Link>
         </li>
-        <li className="nav__item">
+        {
+          name==null?"":<li className="nav__item">
           <Link to="/bookings" className="nav__link">
             Boookings
           </Link>
         </li>
+        }
+        
         {/* <li className="nav__item">
           <Link to="/photos" className="nav__link">
             Galleria

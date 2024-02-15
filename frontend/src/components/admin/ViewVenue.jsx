@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SideBar from './sidebar/SideBar';
+import "./ViewVenue.css";
 
 export default function ViewVenue() {
     const[events,setEvents]=useState([]);
@@ -40,7 +41,7 @@ export default function ViewVenue() {
               <td>{item.rating}</td>
               <td>
 
-              <button onClick={()=>{
+              <button id='deletebtn' onClick={()=>{
                 // console.log("clicked")
                 axios.delete(`http://localhost:8081/api/v1/auth/admin/venues/${item.vid}`)
                 .then((r)=>console.log(r))

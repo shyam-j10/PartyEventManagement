@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import SideBar from './sidebar/SideBar';
+import "./ViewVenue.css";
 
 export default function ViewEvents() {
     const[events,setEvents]=useState([]);
@@ -20,7 +21,7 @@ export default function ViewEvents() {
           <tr>
             <th>Type</th>
             <th>Description</th>
-            <th>Contact No</th>
+            {/* <th>Contact No</th> */}
             <th>People</th>
             <th>Time</th>
             
@@ -31,12 +32,12 @@ export default function ViewEvents() {
             <tr key={item.eid}>
               <td>{item.type}</td>
               <td>{item.des}</td>
-              <td>{item.contactNum}</td>
+              {/* <td>{item.contactNum}</td> */}
               <td>{item.peop}</td>
               <td>{item.time}</td>
               <td>
 
-              <button onClick={()=>{
+              <button id='deletebtn' onClick={()=>{
                 // console.log("clicked")
                 axios.delete(`http://localhost:8081/api/v1/auth/admin/events/${item.eid}`)
                 .then((r)=>console.log(r))

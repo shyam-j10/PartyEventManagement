@@ -5,9 +5,10 @@ import axios from 'axios'
 import Footer from '../footer/Footer'
 import { Navigate, useNavigate } from 'react-router-dom'
 export default function Event() {
-  
+  const [name,setName]=useState("");
   const [events,setEvents]=useState([]);
   useEffect(() => {
+    setName(localStorage.getItem("name"));
     axios.get("http://localhost:8081/api/v1/auth/admin/events")
     .then((r)=>{
       setEvents(r.data);
@@ -30,10 +31,17 @@ export default function Event() {
                <p id='s-price'>{e.des}</p> 
                <p id='s-price'>People:{e.peop}</p> 
                <p id='s-price'>Time:{e.time}</p> 
-               <button onClick={()=>{
-                  localStorage.setItem('event',JSON.stringify(e));
-                  navigate("/venues")
-                }}>Choose Event</button>
+               <center>
+                {
+
+                  name==null?"":<button onClick={()=>{
+                    localStorage.setItem('event',JSON.stringify(e));
+                    navigate("/venues")
+                  }}>Choose Event</button>
+                }
+               
+               </center>
+              
             </div>
         )}
         </div>

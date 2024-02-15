@@ -1,4 +1,4 @@
-body{
+/* body{
     height: 100%;
 }
 .bookings{
@@ -12,7 +12,7 @@ body{
 }
 
 .booking{
-    /* border: 2px solid white; */
+ 
     border-radius: 5px;
     background-color:rgb(247, 247, 247);
     margin-left: 50px;
@@ -25,12 +25,11 @@ body{
     font-family: 'Poppins', sans-serif;
     color:rgb(175,148,83);
     border-radius: 2%;
-    /* font-family: 'Quicksand', sans-serif; */
+  
 }
 .booking:hover{
     box-shadow: 0 14px 20px 0 rgba(0,0,0,0.2);
-    /* width: 45%;
-    height: 52%; */
+  
 }
 
 .booking img{
@@ -42,22 +41,20 @@ body{
     border-radius: 70%;
 }
 .booking img:hover{
-    /* width: 52rem;
-    height: 32rem; */
+    
     opacity: 0.9;
 }
 #s-name{
     text-align: center;
     margin-top:50px ;
-    /* font-family: 'Quicksand', sans-serif; */
-    /* font-family: 'Exo 2', sans-serif; */
+   
 }
 #s-price{
     margin-top: 10px;
     text-align: center;
-    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+    
     font-family: 'Poppins', sans-serif;
-    /* width: 400px; */
+  
 }
 #s-location{
     font-family: 'Exo 2', sans-serif;
@@ -77,4 +74,56 @@ body{
     padding-top: 20px;
     padding-bottom: 20px;
     cursor: pointer;
-}
+} */
+ 
+.bookings {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Align items with equal space between them */
+  }
+  
+  .booking {
+    width: calc(33.33% - 20px); /* Calculate width for three cards in a row with margin */
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  .booking:hover {
+    transform: translateY(-5px); /* Add a slight lift effect on hover */
+  }
+  
+  .booking img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #s-title {
+    margin-top: 20px;
+  }
+  
+  #s-price {
+    font-size: 1rem;
+    margin-bottom: 5px;
+  }
+  
+  button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add a smooth transition effect */
+  }
+  
+  button:hover {
+    background-color: #c82333; /* Darken the background color on hover */
+  }
+  
